@@ -1,0 +1,226 @@
+@import "tailwindcss";
+
+/*
+ * Identidade visual Machado (manual "Identidade visual da empresa").
+ * Tons auxiliares (*-ink, *-muted, line) foram criados para garantir
+ * contraste WCAG AA nas interfaces sem fugir da paleta original.
+ */
+@theme {
+  --color-wood: #2b1d14; /* Madeira escura */
+  --color-wood-2: #22170f;
+  --color-leather: #3a2a1d; /* Couro */
+  --color-leather-2: #4a3626;
+  --color-rust: #a8431c; /* Ferrugem */
+  --color-rust-dark: #8c3714; /* hover */
+  --color-rust-light: #d9794d; /* só sobre fundo escuro */
+  --color-rust-ink: #963b17; /* ferrugem para TEXTO sobre kraft/cartão: 5,3:1 (o original dá 4,4:1) */
+  --color-steel: #8e97a5; /* Aço */
+  --color-steel-light: #b9c0ca;
+  --color-kraft: #eadcc0; /* fundo */
+  --color-card: #f5eddc; /* cartões */
+  --color-ink: #2b1d14;
+  --color-muted: #5b4838; /* texto secundário sobre kraft: 7:1 */
+  --color-line: #d8c6a4;
+  --color-whatsapp: #1f7a4a; /* verde escurecido p/ contraste com texto claro */
+
+  --font-display: var(--font-alfa), "Rockwell", Georgia, serif;
+  --font-label: var(--font-barlow-condensed), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-barlow), system-ui, sans-serif;
+
+  --radius-photo: 18px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-kraft);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem; /* 17px */
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 1.125rem; /* 18px */
+    }
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-rust);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  .on-dark :focus-visible {
+    outline-color: var(--color-rust-light);
+  }
+
+  ::selection {
+    background: var(--color-rust);
+    color: var(--color-card);
+  }
+}
+
+@layer components {
+  /* Etiquetas e botões: Barlow Condensed 700 em caixa alta */
+  .label {
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  .eyebrow {
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 0.875rem;
+    color: var(--color-rust-ink);
+  }
+
+  .on-dark .eyebrow {
+    color: var(--color-rust-light);
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.005em;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3.25rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 1rem;
+    line-height: 1.1;
+    text-align: center;
+    transition:
+      background-color 160ms ease,
+      color 160ms ease,
+      border-color 160ms ease,
+      transform 120ms ease,
+      box-shadow 160ms ease;
+  }
+
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+  .btn-primary {
+    background: var(--color-rust);
+    color: var(--color-card);
+    box-shadow: 0 2px 0 var(--color-rust-dark);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-rust-dark);
+  }
+
+  .btn-outline-light {
+    border: 2px solid rgb(234 220 192 / 0.7);
+    color: var(--color-kraft);
+  }
+
+  .btn-outline-light:hover {
+    border-color: var(--color-kraft);
+    background: rgb(234 220 192 / 0.08);
+  }
+
+  .btn-outline {
+    border: 2px solid var(--color-ink);
+    color: var(--color-ink);
+  }
+
+  .btn-outline:hover {
+    background: var(--color-ink);
+    color: var(--color-kraft);
+  }
+
+  .btn-dark {
+    background: var(--color-wood);
+    color: var(--color-kraft);
+  }
+
+  .btn-dark:hover {
+    background: var(--color-leather);
+  }
+
+  /* Superfície de couro com textura de granulação discreta */
+  .leather {
+    background-color: var(--color-leather);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  }
+
+  .wood {
+    background-color: var(--color-wood);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.004 .09' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.45'/%3E%3C/svg%3E");
+  }
+
+  /* Costura pontilhada, a mesma do anel interno do emblema */
+  .stitch {
+    position: absolute;
+    inset: 10px;
+    border: 2px dashed rgb(234 220 192 / 0.28);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  /* Régua: marcações técnicas usadas como divisória */
+  .ruler {
+    height: 14px;
+    background-image:
+      repeating-linear-gradient(to right, currentColor 0 2px, transparent 2px 60px),
+      repeating-linear-gradient(to right, currentColor 0 1px, transparent 1px 12px);
+    background-size:
+      100% 14px,
+      100% 7px;
+    background-repeat: no-repeat;
+    background-position:
+      0 0,
+      0 0;
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
