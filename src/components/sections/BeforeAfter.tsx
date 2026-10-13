@@ -34,7 +34,7 @@ export function BeforeAfter({ before, after, title }: { before: ProjectImage; af
   return (
     <div
       ref={box}
-      className="relative aspect-[4/3] touch-pan-y select-none overflow-hidden rounded-[var(--radius-photo)] bg-leather"
+      className="relative aspect-[4/3] touch-pan-y select-none overflow-hidden rounded-[var(--radius-photo)] border border-gold-dark/40 bg-graphite"
       onPointerDown={(e) => {
         dragging.current = true;
         e.currentTarget.setPointerCapture(e.pointerId);
@@ -49,10 +49,10 @@ export function BeforeAfter({ before, after, title }: { before: ProjectImage; af
         <Image src={asset(before.src)} alt={before.alt} fill sizes="(min-width: 1024px) 600px, 100vw" loading="lazy" draggable={false} className="object-cover" />
       </div>
 
-      <span className="label pointer-events-none absolute left-3 top-3 rounded-md bg-wood/85 px-2.5 py-1 text-[0.75rem] text-kraft">Antes</span>
-      <span className="label pointer-events-none absolute right-3 top-3 rounded-md bg-rust px-2.5 py-1 text-[0.75rem] text-card">Depois</span>
+      <span className="label pointer-events-none absolute left-3 top-3 rounded-md bg-black/85 px-2.5 py-1 text-[0.68rem] text-ivory">Antes</span>
+      <span className="label pointer-events-none absolute right-3 top-3 rounded-md bg-gold px-2.5 py-1 text-[0.68rem] text-black">Depois</span>
 
-      <div className="pointer-events-none absolute inset-y-0 w-0.5 -translate-x-1/2 bg-card" style={{ left: `${pos}%` }} />
+      <div className="pointer-events-none absolute inset-y-0 w-0.5 -translate-x-1/2 bg-gold" style={{ left: `${pos}%` }} />
       <div
         role="slider"
         tabIndex={0}
@@ -62,7 +62,7 @@ export function BeforeAfter({ before, after, title }: { before: ProjectImage; af
         aria-valuenow={Math.round(pos)}
         aria-valuetext={`${Math.round(pos)}% da foto de antes visível`}
         onKeyDown={onKey}
-        className="absolute top-1/2 flex size-12 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full border-2 border-card bg-rust text-card shadow-lg"
+        className="absolute top-1/2 flex size-12 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full border-2 border-gold-light bg-black text-gold shadow-lg"
         style={{ left: `${pos}%` }}
       >
         <ChevronsLeftRight aria-hidden="true" className="size-6" />

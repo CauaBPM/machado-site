@@ -44,7 +44,7 @@ export function Gallery({ projects }: { projects: Project[] }) {
                   }}
                   type="button"
                   onClick={() => setOpen(i)}
-                  className="group relative block aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-photo)] bg-leather"
+                  className="group relative block aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-photo)] border border-gold-dark/40 bg-graphite"
                 >
                   <Image
                     src={asset(p.image.src)}
@@ -54,7 +54,7 @@ export function Gallery({ projects }: { projects: Project[] }) {
                     sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
-                  <span className="absolute bottom-3 right-3 flex size-10 items-center justify-center rounded-full bg-wood/80 text-kraft opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+                  <span className="absolute bottom-3 right-3 flex size-10 items-center justify-center rounded-full bg-black/80 text-gold opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
                     <Maximize2 aria-hidden="true" className="size-4" />
                   </span>
                   <span className="sr-only">Ampliar foto: {p.title}</span>
@@ -74,10 +74,10 @@ export function Gallery({ projects }: { projects: Project[] }) {
 function ProjectCaption({ project: p }: { project: Project }) {
   return (
     <div className="mt-3">
-      <p className="label text-[0.78rem] text-rust-ink">{p.category}</p>
-      <h3 className="mt-0.5 font-semibold text-wood">{p.title}</h3>
-      <p className="text-[0.98rem] text-muted">{p.description}</p>
-      {p.location ? <p className="mt-1 text-sm text-muted">{p.location}</p> : null}
+      <p className="label text-[0.7rem] text-gold">{p.category}</p>
+      <h3 className="mt-0.5 font-semibold text-ivory">{p.title}</h3>
+      <p className="text-[0.98rem] text-ivory-muted">{p.description}</p>
+      {p.location ? <p className="mt-1 text-sm text-ivory-muted">{p.location}</p> : null}
     </div>
   );
 }

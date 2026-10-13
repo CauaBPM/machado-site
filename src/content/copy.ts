@@ -8,18 +8,20 @@ export const nav = [
   { href: "#servicos", label: "Serviços" },
   { href: "#como-funciona", label: "Como funciona" },
   { href: "#trabalhos", label: "Trabalhos" },
-  { href: "#atendimento", label: "Área de atendimento" },
+  { href: "#atendimento", label: "Atendimento" },
   { href: "#contato", label: "Contato" },
 ] as const;
 
 export const copy = {
   hero: {
-    eyebrow: "Pintura · Elétrica · Hidráulica",
-    title: "Precisando de um reparo ou reforma? A Machado resolve.",
+    /** Usado quando a cidade ainda não foi informada em site.ts. */
+    eyebrow: "Manutenção e reformas",
+    title: "Reformas e reparos com",
+    highlight: "acabamento de verdade",
     subtitle:
-      "Serviços de pintura, elétrica, hidráulica, montagem de móveis, drywall e pequenos reparos para sua casa ou negócio.",
-    primary: "Solicitar orçamento",
-    secondary: "Conhecer os serviços",
+      "Pintura, elétrica, hidráulica, drywall, montagem de móveis e marido de aluguel para casas e empresas.",
+    primary: "Pedir orçamento",
+    secondary: "Ver serviços",
   },
   services: {
     eyebrow: "Serviços",

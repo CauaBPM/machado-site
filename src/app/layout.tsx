@@ -1,15 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Alfa_Slab_One, Barlow, Barlow_Condensed } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import { site } from "@/config/site";
 import { seoDescription, seoTitle } from "@/lib/seo";
 import "./globals.css";
 
-const alfa = Alfa_Slab_One({ weight: "400", subsets: ["latin"], variable: "--font-alfa", display: "swap" });
-const barlow = Barlow({ weight: ["400", "500", "600"], subsets: ["latin"], variable: "--font-barlow", display: "swap" });
-const barlowCondensed = Barlow_Condensed({
-  weight: ["700"],
+const montserrat = Montserrat({
+  weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
-  variable: "--font-barlow-condensed",
+  variable: "--font-montserrat",
   display: "swap",
 });
 
@@ -42,13 +40,13 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#2b1d14",
+  themeColor: "#0a0a0a",
   viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${alfa.variable} ${barlow.variable} ${barlowCondensed.variable}`}>
+    <html lang="pt-BR" className={montserrat.variable}>
       <body>{children}</body>
     </html>
   );

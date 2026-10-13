@@ -2,42 +2,57 @@ import Image from "next/image";
 import { asset } from "@/lib/asset";
 
 type Props = {
-  /** Tom do texto: "dark" sobre kraft, "light" sobre madeira/couro. */
-  tone?: "dark" | "light";
+  /** "horizontal": casa + nome lado a lado (cabeçalho). "full": logo completa empilhada. */
+  variant?: "horizontal" | "full";
   size?: "sm" | "md";
+  /** Largura da logo completa, em px. O manual pede no mínimo 120 px. */
+  width?: number;
   priority?: boolean;
+  className?: string;
 };
 
 /**
- * Logo oficial: emblema extraído do arquivo da marca + nome em Alfa Slab One,
- * a mesma composição horizontal do manual de identidade.
- * O emblema não é redesenhado nem recolorido.
+ * Logo oficial dourada, recortada do arquivo da marca (não redesenhada nem
+ * recolorida). Sempre sobre preto, grafite ou foto escurecida: o manual
+ * proíbe o uso sobre fundo claro ou colorido.
  */
-export function Logo({ tone = "dark", size = "md", priority = false }: Props) {
-  const emblem = size === "sm" ? 44 : 52;
+export function Logo({ variant = "horizontal", size = "md", width = 220, priority = false, className = "" }: Props) {
+  if (variant === "full") {
+    return (
+      <Image
+        src={asset("/brand/logo-machado.webp")}
+        alt="Machado Manutenção e Reformas"
+        width={900}
+        height={655}
+        priority={priority}
+        className={className}
+        style={{ width, height: "auto" }}
+      />
+    );
+  }
+
+  const house = size === "sm" ? 34 : 40;
+  const word = size === "sm" ? 132 : 150;
   return (
-    <span className="flex items-center gap-3">
+    <span className={`flex items-center gap-2.5 ${className}`}>
       <Image
         src={asset("/brand/emblem-128.webp")}
         alt=""
-        width={emblem}
-        height={emblem}
+        width={128}
+        height={81}
         priority={priority}
-        className="shrink-0 transition-[width,height] duration-200"
-        style={{ width: emblem, height: emblem }}
+        className="shrink-0 transition-[height,width] duration-200"
+        style={{ height: house, width: "auto" }}
       />
-      <span className="flex flex-col leading-none">
-        <span
-          className={`display ${size === "sm" ? "text-[1.45rem]" : "text-[1.65rem]"} ${tone === "light" ? "text-kraft" : "text-wood"}`}
-        >
-          MACHADO
-        </span>
-        <span
-          className={`label mt-1 text-[0.62rem] tracking-[0.26em] ${tone === "light" ? "text-rust-light" : "text-rust-ink"}`}
-        >
-          Manutenção e Reforma
-        </span>
-      </span>
+      <Image
+        src={asset("/brand/wordmark.webp")}
+        alt="Machado Manutenção e Reformas"
+        width={480}
+        height={118}
+        priority={priority}
+        className="shrink-0 transition-[width] duration-200"
+        style={{ width: word, height: "auto" }}
+      />
     </span>
   );
 }

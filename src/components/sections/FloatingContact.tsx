@@ -50,7 +50,7 @@ export function FloatingContact() {
     <>
       {/* Barra inferior (mobile) */}
       <div
-        className={`fixed inset-x-0 bottom-0 z-30 border-t border-wood/15 bg-kraft/95 px-4 pt-3 backdrop-blur-sm transition-transform duration-300 md:hidden ${
+        className={`fixed inset-x-0 bottom-0 z-30 border-t border-gold-dark/40 bg-black/95 px-4 pt-3 backdrop-blur-md transition-transform duration-300 md:hidden ${
           show ? "translate-y-0" : "pointer-events-none translate-y-full"
         }`}
         style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
@@ -69,7 +69,7 @@ export function FloatingContact() {
         target="_blank"
         rel="noopener noreferrer"
         inert={!show}
-        className={`fixed z-30 hidden items-center gap-2.5 rounded-full bg-whatsapp py-3 pl-4 pr-5 text-card shadow-[0_12px_30px_-10px_rgb(0_0_0/0.55)] transition-[opacity,transform,background-color] duration-300 hover:bg-[#186a3f] md:flex ${
+        className={`fixed z-30 hidden items-center gap-2.5 rounded-full bg-whatsapp py-3 pl-4 pr-5 text-white shadow-[0_12px_30px_-10px_rgb(0_0_0/0.55)] transition-[opacity,transform,background-color] duration-300 hover:bg-[#1a7740] md:flex ${
           show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
         }`}
         style={{
@@ -78,7 +78,7 @@ export function FloatingContact() {
         }}
       >
         <WhatsAppIcon className="size-6" />
-        <span className="label text-[0.95rem]">WhatsApp</span>
+        <span className="label text-[0.8rem]">WhatsApp</span>
         <span className="sr-only"> – solicitar orçamento (abre em nova aba)</span>
       </a>
     </>

@@ -109,10 +109,10 @@ export function QuoteWizard() {
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1.25fr_0.75fr] lg:gap-8">
-      <div className="rounded-2xl bg-card p-5 text-wood shadow-[0_24px_50px_-28px_rgb(0_0_0/0.8)] sm:p-8">
+      <div className="rounded-2xl border border-gold-dark/40 bg-black p-5 text-ivory shadow-[0_30px_60px_-30px_rgb(0_0_0/0.9)] sm:p-8">
         {/* Progresso */}
         <div>
-          <p className="label text-[0.8rem] text-muted" aria-live="polite">
+          <p className="label text-[0.72rem] text-ivory-muted" aria-live="polite">
             Etapa {step + 1} de {STEPS.length}
             <span className="sr-only">: {current.short}</span>
           </p>
@@ -124,12 +124,12 @@ export function QuoteWizard() {
                 <li key={s.short} aria-current={active ? "step" : undefined}>
                   <span
                     className={`block h-1.5 rounded-full transition-colors duration-300 ${
-                      done || active ? "bg-rust" : "bg-line"
+                      done || active ? "bg-gold" : "bg-line"
                     }`}
                   />
                   <span
-                    className={`label mt-2 hidden text-[0.72rem] sm:block ${
-                      active ? "text-wood" : done ? "text-rust-ink" : "text-muted/80"
+                    className={`label mt-2 hidden text-[0.65rem] sm:block ${
+                      active ? "text-gold" : done ? "text-ivory" : "text-ivory-muted/80"
                     }`}
                   >
                     {s.short}
@@ -166,8 +166,8 @@ export function QuoteWizard() {
                   return (
                     <label
                       key={opt}
-                      className={`group relative flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border-2 px-4 py-3 font-medium transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-rust ${
-                        checked ? "border-rust bg-rust/[0.07] text-wood" : "border-line bg-kraft/40 hover:border-wood/40"
+                      className={`group relative flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 font-medium transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-gold-light ${
+                        checked ? "border-gold bg-gold/[0.08] text-ivory" : "border-line bg-graphite hover:border-gold-dark"
                       }`}
                     >
                       <input
@@ -181,7 +181,7 @@ export function QuoteWizard() {
                       <span
                         aria-hidden="true"
                         className={`flex size-6 shrink-0 items-center justify-center rounded-full border-2 transition-colors ${
-                          checked ? "border-rust bg-rust text-card" : "border-wood/35 bg-card"
+                          checked ? "border-gold bg-gold text-black" : "border-ivory-muted/50 bg-black"
                         }`}
                       >
                         {checked ? <Check className="size-3.5" strokeWidth={3} /> : null}
@@ -192,8 +192,8 @@ export function QuoteWizard() {
                 })}
               </div>
               {error ? (
-                <p id={errorId} role="alert" className="mt-4 flex items-start gap-2 font-medium text-rust-dark">
-                  <span aria-hidden="true" className="mt-2 size-2 shrink-0 rounded-full bg-rust" />
+                <p id={errorId} role="alert" className="mt-4 flex items-start gap-2 font-medium text-gold-light">
+                  <span aria-hidden="true" className="mt-2 size-2 shrink-0 rounded-full bg-gold-light" />
                   {current.error}
                 </p>
               ) : null}
@@ -205,7 +205,7 @@ export function QuoteWizard() {
               <h3 ref={headingRef} tabIndex={-1} className="display text-[1.6rem] outline-none sm:text-[2rem]">
                 {current.title}
               </h3>
-              <label htmlFor={`${uid}-descricao`} className="mt-2 block text-muted">
+              <label htmlFor={`${uid}-descricao`} className="mt-2 block text-ivory-muted">
                 Opcional. Quanto mais detalhes, mais fácil orientar você. Fotos podem ser enviadas depois, na conversa.
               </label>
               <textarea
@@ -216,9 +216,9 @@ export function QuoteWizard() {
                 onChange={(e) => set("description", e.target.value)}
                 placeholder="Ex.: preciso instalar três prateleiras e trocar uma torneira."
                 aria-describedby={`${uid}-contador`}
-                className="mt-4 block w-full resize-y rounded-xl border-2 border-line bg-kraft/40 px-4 py-3 text-[1.0625rem] text-wood placeholder:text-muted/75 focus:border-rust focus:outline-none"
+                className="mt-4 block w-full resize-y rounded-xl border border-line bg-graphite px-4 py-3 text-[1.0625rem] text-ivory placeholder:text-ivory-muted/70 focus:border-gold focus:outline-none"
               />
-              <p id={`${uid}-contador`} className="mt-2 text-right text-sm text-muted">
+              <p id={`${uid}-contador`} className="mt-2 text-right text-sm text-ivory-muted">
                 {answers.description.length}/{MAX_DESCRIPTION} caracteres
               </p>
             </div>
@@ -229,25 +229,25 @@ export function QuoteWizard() {
               <h3 ref={headingRef} tabIndex={-1} className="display text-[1.6rem] outline-none sm:text-[2rem]">
                 {current.title}
               </h3>
-              <p className="mt-2 text-muted">
+              <p className="mt-2 text-ivory-muted">
                 Ao tocar no botão, o WhatsApp abre com a mensagem pronta. Você ainda pode editar antes de enviar.
               </p>
-              <ul className="mt-5 divide-y divide-line rounded-xl border border-line bg-kraft/40">
+              <ul className="mt-5 divide-y divide-line rounded-xl border border-line bg-graphite">
                 {STEPS.slice(0, 4).map((s, i) => {
                   if (s.kind === "review") return null;
                   const value = answers[s.field].trim();
                   return (
                     <li key={s.short} className="flex items-start justify-between gap-3 px-4 py-3">
                       <p className="min-w-0">
-                        <span className="label block text-[0.75rem] text-muted">{s.short}</span>
-                        <span className={`block break-words font-medium ${value ? "" : "italic text-muted"}`}>
+                        <span className="label block text-[0.68rem] text-gold">{s.short}</span>
+                        <span className={`block break-words font-medium ${value ? "" : "italic text-ivory-muted"}`}>
                           {value || "Não informado"}
                         </span>
                       </p>
                       <button
                         type="button"
                         onClick={() => goTo(i)}
-                        className="label flex min-h-11 shrink-0 items-center gap-1.5 rounded-md px-2 text-[0.8rem] text-rust-ink hover:bg-rust/10"
+                        className="label flex min-h-11 shrink-0 items-center gap-1.5 rounded-md px-2 text-[0.7rem] text-gold hover:bg-gold/10"
                       >
                         <Pencil aria-hidden="true" className="size-3.5" />
                         Alterar<span className="sr-only"> {s.short.toLowerCase()}</span>
@@ -265,7 +265,7 @@ export function QuoteWizard() {
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-primary mt-6 w-full text-[1.05rem]"
+                className="btn btn-primary mt-6 w-full text-[0.9rem]"
               >
                 <WhatsAppIcon />
                 Enviar meu pedido de orçamento
@@ -279,7 +279,7 @@ export function QuoteWizard() {
               <button
                 type="button"
                 onClick={() => goTo(step - 1)}
-                className="label flex min-h-12 items-center gap-2 rounded-lg px-3 text-[0.95rem] text-wood hover:bg-wood/5"
+                className="label flex min-h-12 items-center gap-2 rounded-lg px-3 text-[0.8rem] text-ivory hover:bg-ivory/5"
               >
                 <ArrowLeft aria-hidden="true" className="size-4" />
                 Voltar
@@ -292,13 +292,13 @@ export function QuoteWizard() {
               <button
                 type="button"
                 onClick={restart}
-                className="label flex min-h-12 items-center gap-2 rounded-lg px-3 text-[0.95rem] text-muted hover:bg-wood/5"
+                className="label flex min-h-12 items-center gap-2 rounded-lg px-3 text-[0.8rem] text-ivory-muted hover:bg-ivory/5"
               >
                 <RotateCcw aria-hidden="true" className="size-4" />
                 Recomeçar
               </button>
             ) : (
-              <button type="submit" className="btn btn-dark min-h-12 px-6">
+              <button type="submit" className="btn btn-primary min-h-12 px-6">
                 {current.kind === "text" && !answers.description.trim() ? "Pular" : "Continuar"}
                 <ArrowRight aria-hidden="true" className="size-4" />
               </button>
@@ -310,7 +310,7 @@ export function QuoteWizard() {
       <aside aria-label="Prévia da mensagem" className="hidden lg:block">
         <div className="sticky top-28">
           <MessagePreview message={message} empty={!hasAnything} />
-          <p className="mt-4 text-sm text-kraft/70">
+          <p className="mt-4 text-sm text-ivory-muted">
             Nada do que você escreve aqui é salvo ou enviado para o site. A mensagem só sai quando você envia pelo
             WhatsApp.
           </p>
@@ -323,20 +323,20 @@ export function QuoteWizard() {
 function MessagePreview({ message, empty }: { message: string; empty: boolean }) {
   if (empty) {
     return (
-      <div className="flex min-h-[18rem] flex-col items-center justify-center rounded-2xl border-2 border-dashed border-kraft/30 px-6 py-10 text-center">
-        <span className="flex size-14 items-center justify-center rounded-full bg-kraft/10 text-rust-light">
+      <div className="flex min-h-[18rem] flex-col items-center justify-center rounded-2xl border border-dashed border-gold-dark/50 px-6 py-10 text-center">
+        <span className="flex size-14 items-center justify-center icon-tile rounded-full">
           <MessageSquareText aria-hidden="true" className="size-7" />
         </span>
-        <p className="label mt-4 text-kraft">Sua mensagem aparece aqui</p>
-        <p className="mt-2 max-w-[16rem] text-[0.95rem] text-kraft/70">
+        <p className="label mt-4 text-[0.8rem] text-ivory">Sua mensagem aparece aqui</p>
+        <p className="mt-2 max-w-[16rem] text-[0.95rem] text-ivory-muted">
           Escolha o serviço ao lado e o pedido vai se montando, linha por linha.
         </p>
       </div>
     );
   }
   return (
-    <figure className="relative rounded-2xl bg-kraft p-5 text-wood shadow-[0_18px_40px_-20px_rgb(0_0_0/0.7)]">
-      <figcaption className="label flex items-center gap-2 border-b border-dashed border-line pb-3 text-[0.8rem] text-rust-ink">
+    <figure className="relative rounded-2xl bg-ivory p-5 text-black shadow-[0_18px_40px_-20px_rgb(0_0_0/0.8)]">
+      <figcaption className="label flex items-center gap-2 border-b border-dashed border-line-light pb-3 text-[0.7rem] text-gold-ink">
         <WhatsAppIcon className="size-4 text-whatsapp" />
         Prévia da mensagem
       </figcaption>

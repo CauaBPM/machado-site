@@ -11,11 +11,11 @@ export function AreaCheck({ cta }: { cta: string }) {
   const link = whatsappLink(areaCheckMessage + (place.trim() || "(informe seu bairro e cidade)"));
 
   return (
-    <div className="mt-8 rounded-2xl border border-line bg-card p-5 sm:p-6">
-      <label htmlFor={id} className="label block text-[0.9rem] text-wood">
-        Seu bairro e cidade <span className="font-normal normal-case tracking-normal text-muted">(opcional)</span>
+    <div className="card mt-8 bg-black p-5 sm:p-6">
+      <label htmlFor={id} className="label block text-[0.75rem] text-gold">
+        Seu bairro e cidade <span className="font-normal normal-case tracking-normal text-ivory-muted">(opcional)</span>
       </label>
-      <div className="mt-3 flex flex-col gap-3 md:flex-row lg:flex-col xl:flex-row">
+      <div className="mt-3 flex flex-col gap-3 sm:flex-row lg:flex-col">
         <input
           id={id}
           type="text"
@@ -23,9 +23,9 @@ export function AreaCheck({ cta }: { cta: string }) {
           value={place}
           onChange={(e) => setPlace(e.target.value)}
           placeholder="Ex.: nome do bairro, cidade"
-          className="min-h-13 w-full min-w-0 flex-1 rounded-xl border-2 border-line bg-kraft/40 px-4 text-wood placeholder:text-muted/75 focus:border-rust focus:outline-none"
+          className="min-h-13 w-full min-w-0 flex-1 rounded-xl border border-line bg-graphite px-4 text-ivory placeholder:text-ivory-muted/70 focus:border-gold focus:outline-none"
         />
-        <a href={link} target="_blank" rel="noopener noreferrer" className="btn btn-primary shrink-0">
+        <a href={link} target="_blank" rel="noopener noreferrer" className="btn btn-primary sm:shrink-0">
           <WhatsAppIcon className="size-5" />
           {cta}
           <span className="sr-only"> pelo WhatsApp (abre em nova aba)</span>

@@ -14,7 +14,7 @@ export function Accordion({ items }: { items: FaqItem[] }) {
   const uid = useId();
 
   return (
-    <div className="divide-y divide-line border-y border-line">
+    <div className="divide-y divide-line-light border-y border-line-light">
       {items.map((item, i) => {
         const expanded = open === i;
         const btn = `${uid}-b${i}`;
@@ -28,12 +28,12 @@ export function Accordion({ items }: { items: FaqItem[] }) {
                 aria-expanded={expanded}
                 aria-controls={panel}
                 onClick={() => setOpen(expanded ? null : i)}
-                className="flex min-h-16 w-full items-center justify-between gap-4 py-4 text-left text-[1.08rem] font-semibold text-wood transition-colors hover:text-rust-ink sm:text-[1.15rem]"
+                className="flex min-h-16 w-full items-center justify-between gap-4 py-4 text-left text-[1.08rem] font-semibold text-black transition-colors hover:text-gold-ink sm:text-[1.15rem]"
               >
                 {item.question}
                 <span
                   className={`flex size-9 shrink-0 items-center justify-center rounded-full border-2 transition-[transform,background-color,border-color,color] duration-300 ${
-                    expanded ? "rotate-45 border-rust bg-rust text-card" : "border-line text-rust-ink"
+                    expanded ? "rotate-45 border-black bg-black text-gold" : "border-gold-dark/60 text-gold-ink"
                   }`}
                 >
                   <Plus aria-hidden="true" className="size-4" strokeWidth={2.5} />
@@ -50,7 +50,7 @@ export function Accordion({ items }: { items: FaqItem[] }) {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="max-w-2xl pb-6 pr-4 text-muted sm:pr-12">{item.answer}</p>
+                <p className="max-w-2xl pb-6 pr-4 text-ink-muted sm:pr-12">{item.answer}</p>
               </div>
             </div>
           </div>

@@ -40,13 +40,13 @@ export function Header() {
     <header
       className={`sticky top-0 z-40 border-b transition-[background-color,box-shadow,border-color] duration-200 ${
         scrolled || open
-          ? "border-line bg-kraft/95 shadow-[0_6px_20px_-12px_rgb(43_29_20/0.45)] backdrop-blur-sm"
-          : "border-transparent bg-kraft"
+          ? "border-gold-dark/40 bg-black/92 shadow-[0_10px_30px_-18px_rgb(0_0_0/0.9)] backdrop-blur-md"
+          : "border-line bg-black"
       }`}
     >
       <a
         href="#conteudo"
-        className="label absolute left-4 top-2 z-50 -translate-y-24 rounded-md bg-wood px-4 py-3 text-sm text-kraft focus:translate-y-0"
+        className="label absolute left-4 top-2 z-50 -translate-y-24 rounded-md bg-gold px-4 py-3 text-sm text-black focus:translate-y-0"
       >
         Pular para o conteúdo
       </a>
@@ -62,7 +62,7 @@ export function Header() {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="label relative flex min-h-11 items-center px-3 text-[0.95rem] text-wood/85 transition-colors after:absolute after:inset-x-3 after:bottom-2 after:h-0.5 after:origin-left after:scale-x-0 after:bg-rust after:transition-transform hover:text-wood hover:after:scale-x-100"
+                  className="label relative flex min-h-11 items-center px-3 text-[0.78rem] tracking-[0.2em] text-ivory/85 transition-colors after:absolute after:inset-x-3 after:bottom-2 after:h-px after:origin-left after:scale-x-0 after:bg-gold after:transition-transform hover:text-gold-light hover:after:scale-x-100"
                 >
                   {item.label}
                 </a>
@@ -72,13 +72,13 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a href="#orcamento" className="btn btn-primary hidden min-h-11 px-5 text-[0.9rem] sm:inline-flex">
-            Pedir orçamento
+          <a href="#orcamento" className="btn btn-primary hidden min-h-11 px-5 text-[0.78rem] sm:inline-flex">
+            Orçamento
           </a>
           <button
             ref={menuButton}
             type="button"
-            className="flex size-12 items-center justify-center rounded-lg border-2 border-wood/80 text-wood lg:hidden"
+            className="flex size-12 items-center justify-center rounded-lg border border-gold-dark/70 text-gold lg:hidden"
             aria-expanded={open}
             aria-controls="menu-mobile"
             onClick={() => setOpen((v) => !v)}
@@ -93,16 +93,16 @@ export function Header() {
         id="menu-mobile"
         aria-label="Menu"
         hidden={!open}
-        className="border-t border-line bg-kraft lg:hidden"
+        className="border-t border-gold-dark/30 bg-black lg:hidden"
       >
         <ul className="mx-auto max-w-[1200px] px-4 py-3 sm:px-6">
           {nav.map((item, i) => (
-            <li key={item.href} className="border-b border-line/70 last:border-0">
+            <li key={item.href} className="border-b border-line last:border-0">
               <a
                 ref={i === 0 ? firstLink : undefined}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="label flex min-h-13 items-center text-lg text-wood"
+                className="label flex min-h-13 items-center text-[0.95rem] tracking-[0.2em] text-ivory"
               >
                 {item.label}
               </a>

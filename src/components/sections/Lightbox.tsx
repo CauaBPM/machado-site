@@ -45,10 +45,10 @@ export function Lightbox({ projects, index, onClose, onChange }: Props) {
         if (e.key === "ArrowRight") go(1);
         if (e.key === "ArrowLeft") go(-1);
       }}
-      className="m-auto max-h-none max-w-none bg-transparent p-0 backdrop:bg-wood-2/90"
+      className="m-auto max-h-none max-w-none bg-transparent p-0 backdrop:bg-black/95"
     >
       <div className="flex h-dvh w-screen flex-col items-center justify-center gap-4 p-4 sm:p-8">
-        <div className="flex w-full max-w-5xl items-center justify-between text-kraft">
+        <div className="flex w-full max-w-5xl items-center justify-between text-ivory">
           <p className="label text-sm" aria-live="polite">
             {index + 1} / {total}
           </p>
@@ -56,7 +56,7 @@ export function Lightbox({ projects, index, onClose, onChange }: Props) {
             type="button"
             onClick={onClose}
             autoFocus
-            className="flex size-12 items-center justify-center rounded-full bg-kraft/10 hover:bg-kraft/20"
+            className="flex size-12 items-center justify-center rounded-full border border-gold-dark/60 text-gold hover:bg-gold/10"
           >
             <X aria-hidden="true" className="size-6" />
             <span className="sr-only">Fechar</span>
@@ -67,20 +67,20 @@ export function Lightbox({ projects, index, onClose, onChange }: Props) {
           <div className="relative min-h-0 flex-1">
             <Image src={asset(p.image.src)} alt={p.image.alt} fill sizes="100vw" className="object-contain" />
           </div>
-          <figcaption className="mt-4 text-center text-kraft">
-            <span className="label text-[0.8rem] text-rust-light">{p.category}</span>
+          <figcaption className="mt-4 text-center text-ivory">
+            <span className="label text-[0.72rem] text-gold">{p.category}</span>
             <span className="mt-1 block font-medium">{p.title}</span>
-            {p.location ? <span className="block text-sm text-kraft/70">{p.location}</span> : null}
+            {p.location ? <span className="block text-sm text-ivory-muted">{p.location}</span> : null}
           </figcaption>
         </figure>
 
         {total > 1 ? (
           <div className="flex gap-3">
-            <button type="button" onClick={() => go(-1)} className="flex size-12 items-center justify-center rounded-full bg-kraft text-wood hover:bg-card">
+            <button type="button" onClick={() => go(-1)} className="flex size-12 items-center justify-center rounded-full bg-gold text-black hover:bg-gold-light">
               <ChevronLeft aria-hidden="true" className="size-6" />
               <span className="sr-only">Foto anterior</span>
             </button>
-            <button type="button" onClick={() => go(1)} className="flex size-12 items-center justify-center rounded-full bg-kraft text-wood hover:bg-card">
+            <button type="button" onClick={() => go(1)} className="flex size-12 items-center justify-center rounded-full bg-gold text-black hover:bg-gold-light">
               <ChevronRight aria-hidden="true" className="size-6" />
               <span className="sr-only">Próxima foto</span>
             </button>
